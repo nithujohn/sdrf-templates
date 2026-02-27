@@ -39,7 +39,7 @@ columns:
           description: Enrichment method for immunopeptidome
 
   - name: characteristics[MHC typing]
-    description: MHC alleles expressed by the sample following IPD-MHC nomenclature (https://www.ebi.ac.uk/ipd/mhc/). Use IPD-IMGT/HLA notation for human (HLA-A*02:01), H-2 notation for mouse (H-2Kb, H-2Db), or appropriate IPD-MHC notation for other species. Multiple alleles can be separated by semicolons.
+    description: "MHC alleles expressed by the sample (PRIDE:0000893) following IPD-MHC nomenclature (https://www.ebi.ac.uk/ipd/mhc/). Use IPD-IMGT/HLA notation for human (HLA-A*02:01), H-2 notation for mouse (H-2Kb, H-2Db), or appropriate IPD-MHC notation for other species. Multiple alleles can be separated by semicolons."
     requirement: recommended
     allow_not_applicable: true
     allow_not_available: true
@@ -59,7 +59,7 @@ columns:
             - H-2IAb
 
   - name: characteristics[MHC typing method]
-    description: "MHC typing method used. Values mapped to NCIT where available: NGS-based typing (NCIT:C101293), sequence-based typing (NCIT:C130180), PCR-SSO (NCIT:C130181), PCR-SSP (NCIT:C130179), PCR-based genotyping (NCIT:C17003)"
+    description: "MHC typing method used (PRIDE:0000894). Values mapped to NCIT where available: NGS-based typing (NCIT:C101293), sequence-based typing (NCIT:C130180), PCR-SSO (NCIT:C130181), PCR-SSP (NCIT:C130179), PCR-based genotyping (NCIT:C17003)"
     requirement: optional
     allow_not_applicable: true
     allow_not_available: true
@@ -78,7 +78,7 @@ columns:
             - not available
             - not applicable
           error_level: warning
-          description: "MHC typing method used. Values mapped to NCIT where available: NGS-based typing (NCIT:C101293), sequence-based typing (NCIT:C130180), PCR-SSO (NCIT:C130181), PCR-SSP (NCIT:C130179), PCR-based genotyping (NCIT:C17003)"
+          description: "MHC typing method used (PRIDE:0000894). Values mapped to NCIT where available: NGS-based typing (NCIT:C101293), sequence-based typing (NCIT:C130180), PCR-SSO (NCIT:C130181), PCR-SSP (NCIT:C130179), PCR-based genotyping (NCIT:C17003)"
 
   - name: characteristics[antibody used]
     description: Antibody clone used for MHC immunoprecipitation
