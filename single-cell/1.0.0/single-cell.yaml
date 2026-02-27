@@ -60,10 +60,12 @@ columns:
     allow_not_applicable: true
     allow_not_available: false
     validators:
-      - validator_name: pattern
+      - validator_name: identifier
         params:
-          pattern: ^[A-Za-z0-9_.-]+$|^carrier$|^reference$|^empty$|^not applicable$
-          description: Cell identifier (alphanumeric with underscores, hyphens, dots)
+          charset: "[A-Za-z0-9_.-]"
+          special_values: [carrier, reference, empty]
+          error_level: error
+          description: Cell identifier
           examples:
             - cell_001
             - SC_A1
@@ -75,22 +77,6 @@ columns:
   # ==========================================================================
   # RECOMMENDED COLUMNS (per Nature Methods SCP guidelines)
   # ==========================================================================
-
-  - name: characteristics[individual]
-    description: Unique identifier for the individual organism (human donor, mouse, etc.). Important for studies with multiple individuals to track biological variability.
-    requirement: recommended
-    allow_not_applicable: true
-    allow_not_available: true
-    validators:
-      - validator_name: pattern
-        params:
-          pattern: ^[A-Za-z0-9_-]+$|^not available$|^not applicable$
-          description: Individual organism identifier
-          examples:
-            - patient_001
-            - mouse_A
-            - animal_12
-            - donor_A
 
   - name: comment[sample preparation batch]
     description: Batch identifier for sample preparation (plate, chip, processing batch). Critical for batch effect correction.
@@ -123,27 +109,6 @@ columns:
             - 5
             - 10
             - 100
-
-  - name: characteristics[developmental stage]
-    description: Developmental stage of the organism at sample collection
-    requirement: recommended
-    allow_not_applicable: true
-    allow_not_available: true
-    validators:
-      - validator_name: ontology
-        params:
-          ontologies:
-            - efo
-            - hsapdv
-            - mmusdv
-            - uberon
-          error_level: warning
-          description: Developmental stage should be a valid ontology term
-          examples:
-            - adult
-            - embryonic stage
-            - fetal stage
-            - neonate
 
   # ==========================================================================
   # OPTIONAL COLUMNS - Flow Cytometry Data (per Nature Methods guidelines)
@@ -245,9 +210,10 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^[\d.]+ ?um$|^[\d.]+ ?μm$|^not available$|^not applicable$
+          units: [um, μm]
+          error_level: error
           description: Cell diameter with unit
           examples:
             - 15 um
@@ -292,7 +258,7 @@ columns:
             - GFP+
             - daf-2(e1370)
 
-  - name: characteristics[strain]
+  - name: characteristics[strain/breed]
     description: Strain or genetic background of model organisms
     requirement: optional
     allow_not_applicable: true

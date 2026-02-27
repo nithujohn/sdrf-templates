@@ -54,15 +54,14 @@ columns:
     allow_not_applicable: false
     allow_not_available: false
     validators:
-      - validator_name: pattern
+      - validator_name: accession
         params:
-          pattern: ^CVCL_[A-Z0-9]+$
+          format: cellosaurus
           error_level: error
-          description: Cellosaurus accession should follow the format CVCL_XXXX
+          description: Cellosaurus accession
           examples:
             - CVCL_0030
-            - CVCL_0045
-            - CVCL_0062
+            - CVCL_0004
 
   - name: characteristics[cellosaurus name]
     description: Official Cellosaurus name for the cell line
@@ -158,12 +157,13 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^-?\d+(\.\d+)?\s*°?C$|^not available$|^not applicable$
-          description: Storage temperature in Celsius (PRIDE:0000705)
+          units: ["°C"]
+          allow_negative: true
+          error_level: warning
+          description: Storage temperature in Celsius
           examples:
-            - -80°C
-            - -196°C
-            - -150°C
-            - 37°C
+            - -80 °C
+            - -20 °C
+            - 4 °C

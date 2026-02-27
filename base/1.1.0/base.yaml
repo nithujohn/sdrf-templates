@@ -110,8 +110,6 @@ columns:
           values:
             - yes
             - no
-            - not applicable
-            - not available
           error_level: warning
 
   - name: assay name
@@ -135,21 +133,6 @@ columns:
             - protein expression profiling by antibody array
             - protein expression profiling by aptamer array
 
-  - name: comment[instrument]
-    description: Instrument used for data acquisition (MS instrument or affinity platform)
-    requirement: required
-    cardinality: multiple
-    allow_not_applicable: false
-    allow_not_available: false
-    validators:
-      - validator_name: ontology
-        params:
-          ontologies:
-            - ms
-            - pride
-          error_level: warning
-          description: The instrument should be a valid MS or PRIDE ontology term
-
   - name: comment[technical replicate]
     description: Identifier for the technical replicate (integer starting from 1)
     requirement: required
@@ -169,13 +152,14 @@ columns:
     allow_not_applicable: false
     allow_not_available: false
     validators:
-      - validator_name: pattern
+      - validator_name: semver
         params:
-          pattern: ^v\d+\.\d+\.\d+(-[\w.]+)?$
-          description: SDRF version should follow semantic versioning format (e.g., v1.1.0)
+          prefix: "v"
+          allow_prerelease: true
+          error_level: error
+          description: SDRF specification version
           examples:
             - v1.1.0
-            - v1.0.0
             - v2.0.0-dev
 
   - name: comment[sdrf template]
@@ -211,23 +195,6 @@ columns:
             - NT=sdrf-pipelines;VV=v1.0.0
             - sdrf-pipelines v1.0.0
             - manual curation
-
-  - name: comment[modification parameters]
-    description: Post-translational modifications searched
-    requirement: recommended
-    cardinality: multiple
-    allow_not_applicable: true
-    allow_not_available: true
-    validators:
-      - validator_name: ontology
-        params:
-          ontologies:
-            - unimod
-          error_level: warning
-          description: The modification parameters should be valid Unimod terms
-          examples:
-            - NT=Oxidation;MT=Variable;TA=M;AC=Unimod:35
-            - NT=Carbamidomethyl;TA=C;MT=fixed;AC=UNIMOD:4
 
   - name: comment[sdrf validation hash]
     description: Hash value for SDRF validation integrity checking

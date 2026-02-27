@@ -89,12 +89,8 @@ columns:
             - male
             - female
             - intersex
-            - not available
-            - not applicable
-            - anonymized
-            - pooled
           error_level: error
-          description: Sex should be one of the allowed values. Use "anonymized" if redacted or "pooled" for pooled samples.
+          description: Sex should be one of the allowed values.
 
   - name: characteristics[developmental stage]
     description: Developmental stage of the donor
@@ -123,10 +119,11 @@ columns:
     allow_anonymized: true
     allow_pooled: true
     validators:
-      - validator_name: pattern
+      - validator_name: identifier
         params:
-          pattern: ^([A-Za-z0-9_-]+|not applicable|not available|anonymized|pooled)$
-          description: Individual ID should be alphanumeric with underscores or hyphens. Use "anonymized" if redacted or "pooled" for pooled samples.
+          special_values: [anonymized, pooled]
+          error_level: error
+          description: Patient or individual identifier
           examples:
             - patient_001
             - donor-A1
@@ -140,10 +137,12 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: accession
         params:
-          pattern: ^SAM(N|EA|D)\d+$|^not available$|^not applicable$
-          description: BioSample accession number
+          format: biosample
+          error_level: error
+          description: BioSample accession
           examples:
             - SAMN12345678
             - SAMEA12345678
+            - SAMD1234567

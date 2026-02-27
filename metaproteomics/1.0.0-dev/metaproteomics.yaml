@@ -64,14 +64,16 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: date
         params:
-          pattern: ^\d{4}(-\d{2}(-\d{2})?)?$
-          description: ISO 8601 date format
+          format: iso8601
+          precision: [year, month, day]
+          error_level: warning
+          description: Sample collection date
           examples:
-            - 2023-06-15
-            - 2023-06
-            - 2023
+            - "2024"
+            - "2024-01"
+            - "2024-01-15"
 
   - name: characteristics[depth]
     description: Depth at which sample was collected
@@ -79,9 +81,10 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^\d+(\.\d+)?\s*(m|cm|mm)$
+          units: [m, cm, mm]
+          error_level: error
           description: Depth with unit
           examples:
             - 10 m
@@ -94,14 +97,16 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^-?\d+(\.\d+)?\s*[Cc]$
+          units: ["°C"]
+          allow_negative: true
+          error_level: error
           description: Temperature in Celsius
           examples:
-            - 25 C
-            - 4 C
-            - -20 C
+            - 25 °C
+            - 4 °C
+            - -20 °C
 
   - name: characteristics[pH]
     description: pH at sampling location
@@ -174,14 +179,15 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: accession
         params:
-          pattern: ^[A-Z]+\d+$
+          prefix: "[A-Z]+"
+          suffix: "\\d+"
+          error_level: error
           description: Database accession number
           examples:
-            - PRJNA123456
-            - SRR123456
-            - ERR123456
+            - MGYA00001234
+            - SRP123456
 
   - name: comment[sample storage]
     description: Storage conditions for the sample before analysis

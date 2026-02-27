@@ -20,6 +20,19 @@ validators:
         - source name
         - assay name
 columns:
+  - name: technology type
+    description: Type of technology used
+    requirement: required
+    allow_not_applicable: false
+    allow_not_available: false
+    validators:
+      - validator_name: single_cardinality_validator
+        params: {}
+      - validator_name: values
+        params:
+          values:
+            - proteomic profiling by mass spectrometry
+
   - name: comment[proteomics data acquisition method]
     description: Mass spectrometry acquisition method
     requirement: required
@@ -95,7 +108,7 @@ columns:
             - iTRAQ114
 
   - name: comment[fraction identifier]
-    description: Fraction number for fractionated samples (integer, use 1 for non-fractionated)
+    description: Fraction number for fractionated samples (integer, use 1 for non-fractionated). In MS proteomics, this identifies the chromatographic or electrophoretic fraction (e.g., SCX, hpHRP, SEC fractions). Each fraction maps to one data file.
     requirement: required
     type: integer
     allow_not_applicable: false
@@ -137,6 +150,8 @@ columns:
           examples:
             - High-pH reversed-phase chromatography (hpHRP)
             - Strong cation-exchange chromatography (SCX)
+            - Strong anion-exchange chromatography (SAX)
+            - Size-exclusion chromatography (SEC)
 
   - name: comment[collision energy]
     description: Collision energy used for fragmentation
@@ -162,9 +177,10 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^\d+(\.\d+)?\s*(ppm|Da)$|^not available$|^not applicable$
+          units: [ppm, Da]
+          error_level: error
           description: Mass tolerance with unit (ppm or Da)
           examples:
             - 10 ppm
@@ -177,9 +193,10 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^\d+(\.\d+)?\s*(ppm|Da)$|^not available$|^not applicable$
+          units: [ppm, Da]
+          error_level: error
           description: Mass tolerance with unit (ppm or Da)
           examples:
             - 0.02 Da
@@ -230,7 +247,39 @@ columns:
           values:
             - no depletion
             - depletion
-            - not applicable
-            - not available
           error_level: warning
           description: Depletion status
+
+  - name: comment[modification parameters]
+    description: Post-translational modifications searched
+    requirement: recommended
+    cardinality: multiple
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: ontology
+        params:
+          ontologies:
+            - unimod
+          error_level: warning
+          description: The modification parameters should be valid Unimod terms
+          examples:
+            - NT=Oxidation;MT=Variable;TA=M;AC=Unimod:35
+            - NT=Carbamidomethyl;TA=C;MT=fixed;AC=UNIMOD:4
+
+  - name: comment[MS2 mass analyzer]
+    description: Mass analyzer used for MS2 acquisition
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: ontology
+        params:
+          ontologies:
+            - ms
+          error_level: warning
+          description: Should be a valid MS ontology term
+          examples:
+            - orbitrap
+            - ion trap
+            - TOF

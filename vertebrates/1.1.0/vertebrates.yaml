@@ -26,9 +26,9 @@ columns:
           description: The disease should be a valid MONDO, EFO, DOID, or PATO ontology term. Use 'normal' (PATO:0000461) for healthy samples.
           examples:
             - normal
-            - breast cancer
-            - diabetes mellitus
-            - Alzheimer disease
+            - cancer
+            - infection
+            - metabolic disease
 
   - name: characteristics[developmental stage]
     description: Developmental stage of the organism
@@ -78,8 +78,6 @@ columns:
             - male
             - female
             - hermaphrodite
-            - not available
-            - not applicable
           error_level: warning
           description: Sex should be one of the allowed values
 
@@ -89,10 +87,12 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: accession
         params:
-          pattern: ^SAM(N|EA|D)\d+$|^not available$|^not applicable$
-          description: BioSample accession number
+          format: biosample
+          error_level: error
+          description: BioSample accession
           examples:
             - SAMN12345678
             - SAMEA12345678
+            - SAMD1234567

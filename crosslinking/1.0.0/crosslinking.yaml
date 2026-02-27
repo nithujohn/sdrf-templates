@@ -40,17 +40,21 @@ columns:
     allow_not_applicable: false
     allow_not_available: false
     validators:
-      - validator_name: pattern
+      - validator_name: structured_kv
         params:
-          pattern: ^NT=.+;AC=(XLMOD|CHEBI|UNIMOD):\d+.*$
-          description: Should follow structured format with at least NT (name) and AC (accession from XLMOD, ChEBI, or UNIMOD)
+          separator: ";"
+          fields:
+            - key: NT
+              value: ".+"
+            - key: AC
+              value: "(XLMOD|CHEBI|UNIMOD):\\d+"
+          error_level: error
+          description: "Cross-linker in ontology format: NT=name;AC=ontology:accession"
           examples:
-            - NT=DSSO;AC=XLMOD:02010;CL=yes;TA=K,S,T,Y,nterm;MH=54.01;ML=85.98
-            - NT=DSS;AC=XLMOD:02001;CL=no;TA=K,S,T,Y,nterm;SM=138.07
-            - NT=BS3;AC=XLMOD:02000;CL=no;TA=K,S,T,Y,nterm;SM=138.07
-            - NT=DSBU;AC=XLMOD:02011;CL=yes;TA=K,S,T,Y,nterm;MH=85.05;ML=111.03
-            - NT=EDC;AC=XLMOD:02009;CL=no;TA=K,D,E
-            - NT=SDA;AC=XLMOD:02005;CL=no;TA=K,S,T,Y,nterm
+            - "NT=DSS;AC=XLMOD:02001"
+            - "NT=BS3;AC=XLMOD:02000"
+            - "NT=DSSO;AC=XLMOD:02010;CL=yes;TA=K,S,T,Y,nterm;MH=54.01;ML=85.98"
+            - "NT=EDC;AC=XLMOD:02009;CL=no;TA=K,D,E"
 
   - name: comment[dissociation method]
     description: |
@@ -144,9 +148,10 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^\d+(\.\d+)?\s*[AÅ]$
+          units: [A, Å]
+          error_level: error
           description: Distance should be a number followed by unit (A or Å)
           examples:
             - 30 A
@@ -159,9 +164,10 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^\d+(\.\d+)?\s*(mM|uM|µM)$
+          units: [mM, uM, µM]
+          error_level: error
           description: Concentration with unit
           examples:
             - 2 mM
@@ -174,9 +180,10 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^\d+(\.\d+)?\s*(min|h|s)$
+          units: [min, h, s]
+          error_level: error
           description: Time should be a number followed by unit
           examples:
             - 30 min
@@ -189,9 +196,12 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          pattern: ^\d+(\.\d+)?\s*°C$|^room temperature$|^not available$
+          units: ["°C"]
+          allow_negative: true
+          special_values: [room temperature]
+          error_level: error
           description: Temperature should be a number followed by °C (e.g., 25°C or 25 °C)
           examples:
             - 25°C

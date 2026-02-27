@@ -35,9 +35,9 @@ templates:
       Cell lines can originate from any organism - combine with appropriate organism
       template (human for HeLa, vertebrates for NIH 3T3, invertebrates for Sf9).
   crosslinking:
-    latest: 1.1.0
+    latest: 1.0.0
     versions:
-    - 1.1.0
+    - 1.0.0
     extends: ms-proteomics
     usable_alone: false
     layer: experiment
@@ -71,9 +71,9 @@ templates:
     description: Human SDRF template with human-specific sample metadata fields. Must
       be combined with a technology template (ms-proteomics or affinity-proteomics).
   immunopeptidomics:
-    latest: 1.0.0-dev
+    latest: 1.0.0
     versions:
-    - 1.0.0-dev
+    - 1.0.0
     extends: ms-proteomics
     usable_alone: false
     layer: experiment
