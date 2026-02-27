@@ -1,6 +1,6 @@
 name: immunopeptidomics
 description: SDRF template for immunopeptidomics experiments (MHC-bound peptide identification). Works with any organism - combine with appropriate sample template (human for HLA typing, vertebrates for H-2/MHC typing in mouse, etc.).
-version: 1.0.0-dev
+version: 1.0.0
 extends: ms-proteomics
 usable_alone: false
 layer: experiment
