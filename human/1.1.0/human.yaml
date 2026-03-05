@@ -82,6 +82,9 @@ columns:
             - ">18Y"
             - ">=21Y"
             - "<65Y"
+            - not available
+            - anonymized
+            - pooled
 
   - name: characteristics[sex]
     ontology_accession: PATO:0000047
