@@ -101,9 +101,9 @@ templates:
     description: SDRF template for invertebrate samples (Drosophila, C. elegans, insects,
       etc.). Must be combined with a technology template (ms-proteomics or affinity-proteomics).
   human-gut:
-    latest: 1.0.0-dev
+    latest: 1.0.0
     versions:
-    - 1.0.0-dev
+    - 1.0.0
     extends: metaproteomics
     usable_alone: false
     layer: sample
@@ -112,9 +112,9 @@ templates:
       with host-associated columns aligned with the GSC MIxS human-gut extension.
       Combine with ms-proteomics for MS acquisition columns.
   metaproteomics:
-    latest: 1.0.0-dev
+    latest: 1.0.0
     versions:
-    - 1.0.0-dev
+    - 1.0.0
     extends: base
     usable_alone: false
     layer: sample
@@ -188,9 +188,9 @@ templates:
       invertebrates, or plants). Aligned with Nature Methods SCP guidelines (Gatto
       et al., 2023).
   soil:
-    latest: 1.0.0-dev
+    latest: 1.0.0
     versions:
-    - 1.0.0-dev
+    - 1.0.0
     extends: metaproteomics
     usable_alone: false
     layer: sample
@@ -222,9 +222,9 @@ templates:
       reptiles, amphibians). Must be combined with a technology template (ms-proteomics
       or affinity-proteomics).
   water:
-    latest: 1.0.0-dev
+    latest: 1.0.0
     versions:
-    - 1.0.0-dev
+    - 1.0.0
     extends: metaproteomics
     usable_alone: false
     layer: sample
