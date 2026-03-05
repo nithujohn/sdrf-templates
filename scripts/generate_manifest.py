@@ -65,6 +65,8 @@ def find_template_versions(template_dir: Path) -> list[dict]:
             entry["exclusive_with"] = data["exclusive_with"]
         if "requires" in data:
             entry["requires"] = data["requires"]
+        if "excludes" in data:
+            entry["excludes"] = data["excludes"]
         versions.append(entry)
 
     return versions
@@ -118,6 +120,8 @@ def generate_manifest() -> dict:
             entry["exclusive_with"] = latest_data["exclusive_with"]
         if "requires" in latest_data:
             entry["requires"] = latest_data["requires"]
+        if "excludes" in latest_data:
+            entry["excludes"] = latest_data["excludes"]
         entry["description"] = latest_data["description"]
         templates[template_dir.name] = entry
 

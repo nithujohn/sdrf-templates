@@ -29,11 +29,11 @@ contributors:
   - Toan Phung (TPhung001@dundee.ac.uk) - University of Dundee
   - Timo Sachsenberg (timo.sachsenberg@uni-tuebingen.de) - University of Tübingen
 version: 1.0.0
-extends: ms-proteomics
+extends: ms-proteomics@>=1.1.0
 usable_alone: false
 layer: experiment
 columns:
-  - name: comment[chemical cross-linking coupled with MS]
+  - name: comment[chemical cross-linking coupled with ms]
     ontology_accession: PRIDE:0000430
     description: MS-based cross-linking methodology used to identify this as a crosslinking dataset
     requirement: recommended

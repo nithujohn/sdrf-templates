@@ -20,7 +20,7 @@ contributors:
   - Toan Phung (TPhung001@dundee.ac.uk) - University of Dundee
   - Timo Sachsenberg (timo.sachsenberg@uni-tuebingen.de) - University of Tübingen
 version: 1.0.0
-extends: metaproteomics
+extends: metaproteomics@>=1.0.0
 usable_alone: false
 layer: sample
 mutually_exclusive_with:
@@ -312,7 +312,7 @@ columns:
             - amoxicillin 7 days prior
             - broad-spectrum
 
-  - name: characteristics[IHMC medication code]
+  - name: characteristics[ihmc medication code]
     ontology_accession: PRIDE:0000683
     description: Medication codes (IHMC). Corresponds to MIxS ihmc_medication_code (MIXS:0000884).
     requirement: optional
