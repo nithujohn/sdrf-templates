@@ -33,7 +33,7 @@ extends: ms-proteomics@>=1.1.0
 usable_alone: false
 layer: experiment
 columns:
-  - name: comment[chemical cross-linking coupled with MS]
+  - name: comment[chemical cross-linking coupled with ms]
     ontology_accession: PRIDE:0000430
     description: MS-based cross-linking methodology used to identify this as a crosslinking dataset
     requirement: recommended

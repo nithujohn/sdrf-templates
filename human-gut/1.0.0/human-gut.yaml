@@ -312,7 +312,7 @@ columns:
             - amoxicillin 7 days prior
             - broad-spectrum
 
-  - name: characteristics[IHMC medication code]
+  - name: characteristics[ihmc medication code]
     ontology_accession: PRIDE:0000683
     description: Medication codes (IHMC). Corresponds to MIxS ihmc_medication_code (MIXS:0000884).
     requirement: optional
