@@ -34,7 +34,7 @@ contributors:
   - Toan Phung (TPhung001@dundee.ac.uk) - University of Dundee
   - Timo Sachsenberg (timo.sachsenberg@uni-tuebingen.de) - University of Tübingen
 version: 1.1.0
-extends: sample-metadata
+extends: sample-metadata@>=1.0.0
 usable_alone: true
 layer: technology
 mutually_exclusive_with:
@@ -372,8 +372,8 @@ columns:
           pattern: ^.+$
           description: Acquisition date/time
           examples:
-            - 2022-06-01
-            - 2022-06-01_18:28:37
+            - "2022-06-01"
+            - "2022-06-01_18:28:37"
 
   - name: comment[ms min mz]
     ontology_accession: PRIDE:0000476

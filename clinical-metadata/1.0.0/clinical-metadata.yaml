@@ -28,7 +28,7 @@ contributors:
   - Toan Phung (TPhung001@dundee.ac.uk) - University of Dundee
   - Timo Sachsenberg (timo.sachsenberg@uni-tuebingen.de) - University of Tübingen
 version: 1.0.0
-extends: sample-metadata
+extends: sample-metadata@>=1.0.0
 usable_alone: false
 layer: sample
 columns:

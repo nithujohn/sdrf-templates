@@ -28,7 +28,7 @@ contributors:
   - Timo Sachsenberg (timo.sachsenberg@uni-tuebingen.de) - University of Tübingen
   - Magnus Palmblad (n.m.palmblad@lumc.nl) - Leiden University Medical Center
 version: 1.0.0
-extends: affinity-proteomics
+extends: affinity-proteomics@>=1.0.0
 usable_alone: false
 layer: experiment
 mutually_exclusive_with:
