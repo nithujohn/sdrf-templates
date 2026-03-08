@@ -220,13 +220,14 @@ columns:
     validators:
       - validator_name: number_with_unit
         params:
-          units: [ppm, Da]
+          units: [ppm, Da, mmu]
           error_level: error
-          description: Mass tolerance with unit (ppm or Da)
+          description: Mass tolerance with unit (ppm, Da, or mmu)
           examples:
             - 10 ppm
             - 20 ppm
             - 0.5 Da
+            - 20 mmu
 
   - name: comment[fragment mass tolerance]
     ontology_accession: PRIDE:0000576
@@ -237,12 +238,13 @@ columns:
     validators:
       - validator_name: number_with_unit
         params:
-          units: [ppm, Da]
+          units: [ppm, Da, mmu]
           error_level: error
-          description: Mass tolerance with unit (ppm or Da)
+          description: Mass tolerance with unit (ppm, Da, or mmu)
           examples:
             - 0.02 Da
             - 20 ppm
+            - 50 mmu
 
   - name: comment[reduction reagent]
     ontology_accession: PRIDE:0000607
