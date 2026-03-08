@@ -14,7 +14,7 @@ documentation: |
   - `comment[platform]` identifies the specific instrument/platform.
   - `comment[panel name]` and `comment[panel version]` track the commercial panel used.
   - `comment[quantification unit]`: NPX for Olink, RFU for SomaScan.
-  - `comment[sample matrix]`: The biological fluid analyzed (serum, plasma, CSF, etc.).
+  - `characteristics[sample matrix]`: The biological fluid analyzed (serum, plasma, CSF, etc.).
   - `comment[normalization method]`: How data was normalized (plate control, bridge, etc.).
 
   Mutually exclusive with ms-proteomics.
@@ -152,7 +152,7 @@ columns:
             - 1
             - 2
 
-  - name: comment[sample matrix]
+  - name: characteristics[sample matrix]
     description: Type of biological matrix used as input (e.g. serum, plasma, CSF, urine)
     requirement: recommended
     allow_not_applicable: true

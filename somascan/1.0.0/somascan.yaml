@@ -12,7 +12,7 @@ documentation: |
   - `comment[dilution]`: Recommended. Standard dilution factors used in the assay
     (0.005%, 0.5%, 20%, 40%). SomaScan uses multiple dilutions to extend dynamic range.
   - `comment[somascan lot number]`: Optional. Reagent lot for traceability.
-  - Inherited from affinity-proteomics: `comment[sample matrix]` (serum, plasma),
+  - Inherited from affinity-proteomics: `characteristics[sample matrix]` (serum, plasma),
     `comment[quantification unit]` (RFU), `comment[normalization method]`.
 
   SomaScan data uses Relative Fluorescence Units (RFU). Multiple dilutions per sample

@@ -12,7 +12,7 @@ documentation: |
     Organism templates (human, vertebrates, etc.) override this to required.
   - `characteristics[biological replicate]`: Integer starting from 1. Use `pooled` for
     pooled reference samples only.
-  - `comment[sample type]`: Classifies the sample's role in multiplexed experiments.
+  - `characteristics[sample type]`: Classifies the sample's role in multiplexed experiments.
     Values include single cell, reference, bridge, carrier, empty, quality control sample,
     and various control types. This column replaces older per-template role columns.
   - `characteristics[biosample accession number]`: Link to BioSample record (SAMN/SAMEA/SAMD).
@@ -130,7 +130,7 @@ columns:
           examples:
             - SN=sample1;SN=sample2
 
-  - name: comment[sample type]
+  - name: characteristics[sample type]
     ontology_accession: PRIDE:0000895
     description: Classification of the sample role in the experiment. Distinguishes experimental samples from controls, references, and other roles in multiplexed or plate-based experiments.
     requirement: optional
