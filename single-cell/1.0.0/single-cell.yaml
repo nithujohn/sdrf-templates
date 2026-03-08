@@ -41,7 +41,7 @@ columns:
   # Disease and organism-specific columns come from sample templates (human, vertebrates, etc.)
 
   # Override sample type to recommended for single-cell (carrier, reference, empty wells)
-  - name: comment[sample type]
+  - name: characteristics[sample type]
     ontology_accession: PRIDE:0000895
     requirement: recommended
 

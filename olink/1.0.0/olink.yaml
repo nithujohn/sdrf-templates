@@ -13,7 +13,7 @@ documentation: |
   - `comment[npx normalization]`: Recommended. How NPX values were normalized
     (plate control normalized, intensity normalized, bridge normalized, not normalized).
   - `comment[olink lot number]`: Optional. Reagent lot for traceability.
-  - Inherited from affinity-proteomics: `comment[sample matrix]` (serum, plasma, CSF),
+  - Inherited from affinity-proteomics: `characteristics[sample matrix]` (serum, plasma, CSF),
     `comment[quantification unit]` (NPX), `comment[normalization method]`.
 
   Olink data uses Normalized Protein eXpression (NPX) units on a log2 scale.
