@@ -19,7 +19,7 @@ contributors:
   - Asier Larrea (alarre@ebi.ac.uk) - EMBL-EBI
   - Toan Phung (TPhung001@dundee.ac.uk) - University of Dundee
   - Timo Sachsenberg (timo.sachsenberg@uni-tuebingen.de) - University of Tübingen
-version: 1.0.1
+version: 1.0.0
 extends: metaproteomics@>=1.0.0
 usable_alone: false
 layer: sample
@@ -529,13 +529,13 @@ columns:
     allow_not_available: false
     validators:
       - validator_name: identifier
-         params:
+        params:
           charset: "[A-Za-z0-9_.-]"
           special_values: [anonymized]
           error_level: error
           description: project name identifier
           examples:
-            - Human microbiome project
+            - Human_microbiome_project
 
   # ==========================================================================
   # OPTIONAL COLUMNS - Sampling and Storage
@@ -565,7 +565,7 @@ columns:
     allow_not_available: true
     validators:
       - validator_name: pattern
-         params:
+        params:
           pattern: ^.+$
           description: storage location description
           examples:
