@@ -311,7 +311,7 @@ columns:
             - breakfast 4 hours prior
             - fasting 12 hours
 
- - name: characteristics[host family relationship]
+  - name: characteristics[host family relationship]
     ontology_accession: PRIDE:0000691
     description: Relationships to other hosts in the same study; can include multiple relationships MIXS:0000872.
     requirement: optional

@@ -27,6 +27,44 @@ mutually_exclusive_with:
   - human-gut
   - water
 columns:
+
+  # ==========================================================================
+  # REQUIRED COLUMNS - Sample Identification
+  # ==========================================================================
+
+  - name: source name[sample name]
+    ontology_accession: PRIDE:0000623
+    description: Reference to the Sample. This term is used for cross-reference samples in SDRF for proteomics (MIXS:0001107).
+    requirement: required
+    allow_not_applicable: true
+    allow_not_available: false
+    validators:
+      - validator_name: identifier
+        params:
+          charset: "[A-Za-z0-9_.-]"
+          special_values: [anonymized]
+          error_level: error
+          description: sample name identifier
+          examples:
+            - Sample 1
+            - Sample 2
+  - name: project name
+    ontology_accession: PRIDE:0000676
+    description: Name of the project within which the sequencing was organized (MIXS:0000092).
+    requirement: required
+    allow_not_applicable: true
+    allow_not_available: false
+    validators:
+      - validator_name: identifier
+        params:
+          charset: "[A-Za-z0-9_.-]"
+          special_values: [anonymized]
+          error_level: error
+          description: project name identifier
+          examples:
+            - Bermuda Atlantic Time-series Study
+            - Metaproteomes of Seawater Microbial Communities
+
   # ==========================================================================
   # RECOMMENDED COLUMNS
   # ==========================================================================
@@ -51,7 +89,271 @@ columns:
             - silt
 
   # ==========================================================================
-  # OPTIONAL COLUMNS - Soil Properties
+  # OPTIONAL COLUMNS - Environment & Location
+  # ==========================================================================
+
+  - name: characteristics[elevation]
+    ontology_accession: PRIDE:0000712
+    description: Height of the sampling site above mean sea level.
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - 10 feet
+            - 30 feet 
+            - 2 cm
+          error_level: warning
+          description: elevation with unit
+
+  - name: characteristics[slope gradient]
+    ontology_accession: PRIDE:0000740
+    description: The angle between ground surface and a horizontal line (MIxS:0000646).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - 10 %
+            - 30 %
+          error_level: warning
+          description: slope gradient with unit
+
+  - name: characteristics[slope aspect]
+    ontology_accession: PRIDE:0000741
+    description: The direction a slope faces (MIxS:0000647).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - 300 degrees
+            - north west
+            - south
+          error_level: warning
+          description: slope aspect
+
+  - name: characteristics[profile position]
+    ontology_accession: PRIDE:0000742
+    description: Cross-sectional position in the hillslope where sample was collected (MIxS:0001084).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - summit
+            - shoulder
+            - backslope
+          error_level: warning
+          description: profile position
+
+  - name: characteristics[drainage classification]
+    ontology_accession: PRIDE:0000743
+    description: Drainage classification from a standard system such as the USDA system (MIxS:0001085).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - well drained
+            - poorly drained
+            - very poorly drained
+          error_level: warning
+          description: drainage classification
+
+  # ==========================================================================
+  # OPTIONAL COLUMNS - Land Use & vegetation
+  # ==========================================================================
+
+  - name: characteristics[current land use]
+    ontology_accession: PRIDE:0000713
+    description: Present state of sample site (MIXS:0001080).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: pattern
+        params:
+          pattern: ^.+$
+          description: Land use type
+          examples:
+            - agricultural
+            - forest
+            - urban
+            - grassland
+            - wetland
+
+  - name: characteristics[current vegetation]
+    ontology_accession: PRIDE:0000714
+    description: Current vegetation type at sampling site. Corresponds to MIxS cur_vegetation (MIXS:0000312).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: ontology
+        params:
+          ontologies:
+            - envo
+          error_level: warning
+          description: Should be a valid ENVO vegetation term
+          examples:
+            - grassland
+            - deciduous forest
+            - cropland
+
+  - name: comment[current vegetation method]
+    ontology_accession: PRIDE:0000715
+    description: method used in vegetation classification (MIXS:0000314).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - vegetation survey
+            - quadrant sampling
+          error_level: warning
+          description: current vegetation method
+
+  - name: characteristics[history of previous land use]
+    ontology_accession: PRIDE:0000717
+    description: Previous land use and dates (MIXS:0000315).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - agricultural land 15 years
+            - grassland forest 5 years
+          error_level: warning
+          description: history of previous land use and dates
+
+  - name: comment[history of previous land use method]
+    ontology_accession: PRIDE:0000715
+    description: Reference or method used in determining previous land use (MIXS:0000316).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - land registry records
+            - historical archives
+          error_level: warning
+          description: current vegetation method
+
+  # ==========================================================================
+  # OPTIONAL COLUMNS - Agricultural History
+  # ==========================================================================
+
+  - name: characteristics[crop rotation]
+    ontology_accession: PRIDE:0000718
+    description: Crop rotation history. Corresponds to MIxS crop_rotation (MIXS:0000318).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: pattern
+        params:
+          pattern: ^.+$
+          description: Crop rotation description
+          examples:
+            - corn-soybean rotation
+            - wheat-fallow
+            - continuous corn
+
+  - name: characteristics[history of agrochemical additions]
+    ontology_accession: PRIDE:0000719
+    description: Addition of fertilizers, pesticides, etc. - amount and time of applications (MIXS:0000639).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - urea 2mg/L, 2020-01-01
+            - superphosphate 5mg/L, 2019-02-19
+          error_level: warning
+          description: agrochemical additions with amount and dates
+
+  - name: characteristics[history of tillage]
+    ontology_accession: PRIDE:0000720
+    description: tilling methods (MIXS:0001081).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - chisel 
+            - digging spade
+          error_level: warning
+          description: tillage classification
+
+- name: characteristics[history of fire]
+    ontology_accession: PRIDE:0000721
+    description: evidence of fire (MIXS:0001086).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: dates
+        params:
+          values:
+            - 2025-10-09 
+            - 2020-06-23
+          error_level: warning
+          description: fire history
+
+
+  - name: characteristics[history of flooding]
+    ontology_accession: PRIDE:0000722
+    description: evidence of flooding (MIXS:0000319).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: dates
+        params:
+          values:
+            - 2025-10-09 
+            - 2020-06-23
+          error_level: warning
+          description: flooding history
+
+  - name: characteristics[history of extreme event]
+    ontology_accession: PRIDE:0000723
+    description: events that may have affected microbial populations (MIXS:0000320).
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: dates
+        params:
+          values:
+            - 2025-10-09 
+            - 2020-06-23
+          error_level: warning
+          description: extreme event history
+
+  # ==========================================================================
+  # OPTIONAL COLUMNS - Soil Classification & History
   # ==========================================================================
 
   - name: characteristics[soil horizon]
@@ -73,9 +375,9 @@ columns:
           error_level: warning
           description: Soil horizon
 
-  - name: characteristics[land use]
-    ontology_accession: PRIDE:0000713
-    description: Land use type at sampling site
+  - name: comment[horizon method]
+    ontology_accession: PRIDE:0000725
+    description: method used in determining the horizon (MIXS:0000321).
     requirement: optional
     allow_not_applicable: true
     allow_not_available: true
@@ -83,30 +385,62 @@ columns:
       - validator_name: pattern
         params:
           pattern: ^.+$
-          description: Land use type
+          description: Horizon method description
           examples:
-            - agricultural
-            - forest
-            - urban
-            - grassland
-            - wetland
+            - USDA Field Book
+            - FAO Guidelines for Soil Profile Description
+            - none
+   
+  - name: characteristics[soil type]
+    ontology_accession: PRIDE:0001001
+    description: soil type or classification (MIxS:0000332)
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - acidic soil
+            - arenosol soil 
+            - clay soil
+            - farm soil
+          error_level: warning
+          description: Soil type
 
-  - name: characteristics[vegetation]
-    ontology_accession: PRIDE:0001003
-    description: Dominant vegetation at sampling site
+  - name: characteristics[soil taxonomic of FAO classification]
+    ontology_accession: PRIDE:0000737
+    description: Soil classification from the FAO World soil distribution (MIxS:0001083)
     requirement: optional
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: values
         params:
-          pattern: ^.+$
-          description: Vegetation description
-          examples:
-            - deciduous forest
-            - corn field
-            - prairie
-            - tropical rainforest
+          values:
+            - acrisols
+            - calcisols 
+            - durisols
+            - gleysols
+          error_level: warning
+          description: FAO soil classification
+
+  - name: characteristics[link to classification information]
+    ontology_accession: PRIDE:0000736
+    description: Link to digitized soil maps or other soil classification information (MIxS:0000329)
+    requirement: optional
+    allow_not_applicable: true
+    allow_not_available: true
+    validators:
+      - validator_name: values
+        params:
+          values:
+            - acrisols
+            - calcisols 
+            - durisols
+            - gleysols
+          error_level: warning
+          description: FAO soil classification
 
   - name: characteristics[total organic carbon]
     ontology_accession: PRIDE:0000749
@@ -167,40 +501,6 @@ columns:
           examples:
             - sand 60%;silt 25%;clay 15%
             - loamy sand
-
-  - name: characteristics[current vegetation]
-    ontology_accession: PRIDE:0000714
-    description: Current vegetation type at sampling site. Corresponds to MIxS cur_vegetation (MIXS:0000312).
-    requirement: optional
-    allow_not_applicable: true
-    allow_not_available: true
-    validators:
-      - validator_name: ontology
-        params:
-          ontologies:
-            - envo
-          error_level: warning
-          description: Should be a valid ENVO vegetation term
-          examples:
-            - grassland
-            - deciduous forest
-            - cropland
-
-  - name: characteristics[crop rotation]
-    ontology_accession: PRIDE:0000718
-    description: Crop rotation history. Corresponds to MIxS crop_rotation (MIXS:0000318).
-    requirement: optional
-    allow_not_applicable: true
-    allow_not_available: true
-    validators:
-      - validator_name: pattern
-        params:
-          pattern: ^.+$
-          description: Crop rotation description
-          examples:
-            - corn-soybean rotation
-            - wheat-fallow
-            - continuous corn
 
   - name: characteristics[perturbation]
     ontology_accession: PRIDE:0000700
