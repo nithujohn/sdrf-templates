@@ -313,14 +313,13 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: dates
+      - validator_name: date
         params:
-          values:
-            - 2025-10-09 
-            - 2020-06-23
-          error_level: warning
-          description: fire history
-
+          format: iso8601
+          precision: [day]
+          examples:
+            - 09-10-2025
+            - 10-02-2002
 
   - name: characteristics[history of flooding]
     ontology_accession: PRIDE:0000722
@@ -329,13 +328,13 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: dates
+      - validator_name: date
         params:
-          values:
-            - 2025-10-09 
-            - 2020-06-23
-          error_level: warning
-          description: flooding history
+          format: iso8601
+          precision: [day]
+          examples:
+            - 09-10-2025
+            - 10-02-2002
 
   - name: characteristics[history of extreme event]
     ontology_accession: PRIDE:0000723
@@ -344,13 +343,13 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: dates
+      - validator_name: date
         params:
+          format: iso8601
+          precision: [day]
           examples:
-            - 2025-10-09 
-            - 2020-06-23
-          error_level: warning
-          description: extreme event history
+            - 09-10-2025
+            - 10-02-2002
 
   # ==========================================================================
   # OPTIONAL COLUMNS - Soil Classification & History
@@ -519,8 +518,8 @@ columns:
           unit: ["oC"]
           description: Mean annual temperature in °C
           examples:
-            - "12.5"
-            - "25"
+            - 12.5 oC
+            - 25 oC
 
   - name: characteristics[mean seasonal temperature]
     ontology_accession: PRIDE:0000733
@@ -549,8 +548,8 @@ columns:
           unit: [mm/year]
           description: Annual precipitation in mm/year
           examples:
-            - "800"
-            - "1200.5"
+            - 800/year
+            - 1200.5/year
 
   - name: characteristics[mean seasonal precipitation]
     ontology_accession: PRIDE:0000735
@@ -593,15 +592,15 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: numeric
+      - validator_name: number_with_unit
         params:
-          unit: [percent]
+          unit: ["%"]
           min: "0"
           max: "100"
           description: Organic matter content (%)
           examples:
-            - "5.2"
-            - "12"
+            - 5.2 %
+            - 12 %
 
   - name: characteristics[total organic carbon]
     ontology_accession: PRIDE:0000749
@@ -640,7 +639,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: values
+      - validator_name: number_with_unit
         params:
           unit: ["%"]
           description: Organic nitrogen (%)
@@ -655,7 +654,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: values
+      - validator_name: number_with_unit
         params:
           unit: ["%"]
           description: Total nitrogen (%)
@@ -676,7 +675,7 @@ columns:
           description: Description of nitrogen measurement method
           examples:
             - Kjeldahl method
-          -   Dumas combustion method
+            - Dumas combustion method
 
   - name: characteristics[water content]
     ontology_accession: PRIDE:0000727
@@ -715,7 +714,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: values
+      - validator_name: number_with_unit
         params:
           unit: ["mg/kg"]
           description: Microbial biomass concentration
@@ -780,7 +779,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: numeric
+      - validator_name: number_with_unit
         params:
           unit: ["%"]
           description: Aluminum saturation (%)

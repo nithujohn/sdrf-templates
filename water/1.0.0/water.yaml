@@ -126,7 +126,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: values
+      - validator_name: number_with_unit
         params:
           values:
             - 35 m
@@ -142,7 +142,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: values
+      - validator_name: number_with_unit
         params:
           values:
             - 0.35 m/s
@@ -157,7 +157,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: values
+      - validator_name: number_with_unit
         params:
           values:
             - 0.035 m/s
@@ -172,7 +172,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: values
+      - validator_name: pattern
         params:
           values:
             - 0.015 m/s
@@ -187,7 +187,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: values
+      - validator_name: pattern
         params:
           values:
             - 15 dbar

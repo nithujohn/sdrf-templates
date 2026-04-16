@@ -551,6 +551,7 @@ columns:
       - validator_name: number_with_unit
         params:
           units: ["°C"]
+          allow_negative: true
           error_level: warning
           description: temperature in Celsius
           examples:
