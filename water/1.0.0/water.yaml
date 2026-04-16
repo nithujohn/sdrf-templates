@@ -1029,7 +1029,7 @@ columns:
     validators:
       - validator_name: number_with_unit
         params:
-          units: ["ug/m3/day, umolO2/L/hr"]
+          units: ["ug/m3/day", "umolO2/L/hr"]
           error_level: warning
           description: bacterial respiration measurement with unit
           examples:
@@ -1175,7 +1175,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-       - validator_name: number_with_unit
+        - validator_name: number_with_unit
           params:
           units: ["mol/L"]
           error_level: warning
@@ -1191,7 +1191,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-       - validator_name: number_with_unit
+        - validator_name: number_with_unit
           params:
           units: ["ng/L"]
           error_level: warning
@@ -1207,7 +1207,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-       - validator_name: number_with_unit
+        - validator_name: number_with_unit
           params:
           units: ["ug/L, ug/g"]
           error_level: warning
@@ -1224,7 +1224,7 @@ columns:
     allow_not_available: true
     validators:
        - validator_name: pattern
-        params:
+         params:
           pattern: ^.+$
           description: Phospholipid fatty acid name and measurement value
           examples:
