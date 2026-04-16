@@ -45,8 +45,8 @@ columns:
           error_level: error
           description: sample name identifier
           examples:
-            - Sample 1
-            - Sample 2
+            - Sample_1
+            - Sample_2
   - name: project name
     ontology_accession: PRIDE:0000676
     description: Name of the project within which the sequencing was organized (MIXS:0000092).
@@ -61,8 +61,8 @@ columns:
           error_level: error
           description: project name identifier
           examples:
-            - Bermuda Atlantic Time-series Study
-            - Metaproteomes of Seawater Microbial Communities
+            - Bermuda_Atlantic_Time-series_Study
+            - Metaproteomes_of_Seawater_Microbial_Communities
 
   # ==========================================================================
   # RECOMMENDED COLUMNS- Location and Environment
@@ -678,22 +678,6 @@ columns:
             - 5 mmol/L
             - 3.5 mmol/L
 
-  - name: characteristics[sulfate]
-    ontology_accession: PRIDE:0000817
-    description: Sulfate concentration. Corresponds to MIxS(MIXS:0000423).
-    requirement: optional
-    allow_not_applicable: true
-    allow_not_available: true
-    validators:
-      - validator_name: number_with_unit
-        params:
-          units: [mmol/L]
-          error_level: warning
-          description: Sulfate with unit
-          examples:
-            - 5 mmol/L
-            - 3.5 mmol/L
-
   - name: characteristics[sulfide]
     ontology_accession: PRIDE:0000818
     description: Sulfide concentration. Corresponds to MIxS(MIXS:0000424).
@@ -936,22 +920,6 @@ columns:
           examples:
             - 0.3 umol/L
             - 0.5 umol/L
-
-  - name: characteristics[total particulate carbon]
-    ontology_accession: PRIDE:0000825
-    description: Total particulate carbon content. Corresponds to MIxS (MIXS:0000747).
-    requirement: optional
-    allow_not_applicable: true
-    allow_not_available: true
-    validators:
-      - validator_name: number_with_unit
-        params:
-          units: [umol/L, ug/L]
-          error_level: warning
-          description: Particulate organic carbon concentration with unit
-          examples:
-            - 35 umol/L
-            - 5 ug/L
 
   - name: characteristics[total particulate carbon]
     ontology_accession: PRIDE:0000825

@@ -596,12 +596,12 @@ columns:
     validators:
        - validator_name: number_with_unit
          params:
-          units: ["ml"]
+          units: ["ml,g"]
           error_level: warning
           description: volume or weight of DNA extraction
           examples:
             - 1 ml
-            - 2 ml
+            - 2 g
 
   - name: comment[organism count]
     ontology_accession: PRIDE:0000704

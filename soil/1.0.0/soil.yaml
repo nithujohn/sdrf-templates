@@ -46,8 +46,8 @@ columns:
           error_level: error
           description: sample name identifier
           examples:
-            - Sample 1
-            - Sample 2
+            - Sample_1
+            - Sample_2
   - name: project name
     ontology_accession: PRIDE:0000676
     description: Name of the project within which the sequencing was organized (MIXS:0000092).
@@ -62,8 +62,8 @@ columns:
           error_level: error
           description: project name identifier
           examples:
-            - Bermuda Atlantic Time-series Study
-            - Metaproteomes of Seawater Microbial Communities
+            - Bermuda_Atlantic_Time-series_Study
+            - Metaproteomes_of_Seawater_Microbial_Communities
 
   # ==========================================================================
   # RECOMMENDED COLUMNS
@@ -306,7 +306,7 @@ columns:
           error_level: warning
           description: tillage classification
 
-- name: characteristics[history of fire]
+  - name: characteristics[history of fire]
     ontology_accession: PRIDE:0000721
     description: evidence of fire (MIXS:0001086).
     requirement: optional
@@ -390,23 +390,6 @@ columns:
             - USDA Field Book
             - FAO Guidelines for Soil Profile Description
             - none
-   
-  - name: characteristics[soil type]
-    ontology_accession: PRIDE:0001001
-    description: soil type or classification (MIxS:0000332)
-    requirement: optional
-    allow_not_applicable: true
-    allow_not_available: true
-    validators:
-      - validator_name: values
-        params:
-          values:
-            - acidic soil
-            - arenosol soil 
-            - clay soil
-            - farm soil
-          error_level: warning
-          description: Soil type
 
   - name: characteristics[soil taxonomic of FAO classification]
     ontology_accession: PRIDE:0000737
