@@ -95,7 +95,7 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: values
+      - validator_name: number_with_unit
         params:
           values:
             - 10 feet
