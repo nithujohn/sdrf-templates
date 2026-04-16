@@ -97,7 +97,9 @@ columns:
     validators:
       - validator_name: number_with_unit
         params:
-          values:
+          units: [feet, cm]
+          error_level: warning
+          examples:
             - 10 feet
             - 30 feet 
             - 2 cm
@@ -128,7 +130,9 @@ columns:
     validators:
       - validator_name: number_with_unit
         params:
-          values:
+          units: [m]
+          error_level: warning
+          examples:
             - 35 m
             - 10 m
             - 200 m
@@ -144,10 +148,11 @@ columns:
     validators:
       - validator_name: number_with_unit
         params:
-          values:
-            - 0.35 m/s
-            - 0.10 m/s 
+          units: [m/s]
           error_level: warning
+          examples:
+            - 0.35 m/s
+            - 0.10 m/s
           description: water current with unit 
 
   - name: characteristics[mean friction velocity]
@@ -159,10 +164,11 @@ columns:
     validators:
       - validator_name: number_with_unit
         params:
-          values:
+          units: [m/s]
+          error_level: warning
+          examples:
             - 0.035 m/s
             - 0.010 m/s 
-          error_level: warning
           description: mean friction velocity with unit 
 
   - name: characteristics[mean peak friction velocity]
@@ -187,12 +193,13 @@ columns:
     allow_not_applicable: true
     allow_not_available: true
     validators:
-      - validator_name: pattern
+      - validator_name: number_with_unit
         params:
-          values:
+          units: [dbar]
+          error_level: warning
+          examples:
             - 15 dbar
             - 25 dbar 
-          error_level: warning
           description: pressure with unit 
 
   # ==========================================================================
